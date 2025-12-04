@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SelfShare.Views.LoginPage"
+             Shell.NavBarIsVisible="True"
+             Title="Login">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+            
+            <!-- Logo -->
+            <Frame BackgroundColor="#26A69A" 
+                   CornerRadius="10"
+                   WidthRequest="80"
+                   HeightRequest="80"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,20">
+                <Label Text="📚" 
+                       FontSize="40" 
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+            </Frame>
+
+            <!-- Title -->
+            <Label Text="Login"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,30"/>
+
+            <!-- Email Entry -->
+            <Entry x:Name="EmailEntry"
+                   Placeholder="Email"
+                   Keyboard="Email"/>
+
+            <!-- Password Entry -->
+            <Entry x:Name="PasswordEntry"
+                   Placeholder="Password"
+                   IsPassword="True"/>
+
+            <!-- Forgot Password -->
+            <Label Text="Forgot Password ?"
+                   TextColor="#4DD0E1"
+                   FontSize="14"
+                   HorizontalOptions="End"/>
+
+            <!-- Login Button -->
+            <Button Text="Log In"
+                    BackgroundColor="#4DD0E1"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    Margin="0,20,0,0"
+                    Clicked="OnLoginClicked"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

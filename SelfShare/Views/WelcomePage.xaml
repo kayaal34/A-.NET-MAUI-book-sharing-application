@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SelfShare.Views.WelcomePage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+
+    <Grid MaximumWidthRequest="450" HorizontalOptions="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0"
+                StrokeThickness="0"
+                BackgroundColor="#2D9CDB"
+                VerticalOptions="Fill">
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="0,0,40,40"/>
+            </Border.StrokeShape>
+
+            <VerticalStackLayout Spacing="15" 
+                                 VerticalOptions="Center" 
+                                 HorizontalOptions="Center">
+
+                <Image Source="books_logo.png" 
+                       HeightRequest="130" 
+                       WidthRequest="130"
+                       HorizontalOptions="Center"/>
+
+                <Label Text="Shelf Share"
+                       FontSize="32"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center"/>
+
+                <Label Text="Exchange books with fellow students"
+                       FontSize="14"
+                       TextColor="#E3F2FD"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"/>
+            </VerticalStackLayout>
+        </Border>
+
+        <VerticalStackLayout Grid.Row="1" 
+                             Spacing="20" 
+                             Padding="30,40,30,0"
+                             VerticalOptions="Start">
+
+            <Button Text="Log In"
+                    BackgroundColor="#2D9CDB"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="55"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Clicked="OnLoginClicked"/>
+
+            <Button Text="Sign Up"
+                    BackgroundColor="#D6EAF8"
+                    TextColor="#2D9CDB"
+                    CornerRadius="10"
+                    HeightRequest="55"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Clicked="OnSignUpClicked"/>
+
+            <Label HorizontalOptions="Center" 
+       HorizontalTextAlignment="Center"
+       FontSize="11"
+       Margin="0,15,0,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="By continuing, you agree to our " TextColor="Gray"/>
+
+                        <Span Text="Terms Of Service" 
+                  TextColor="#2D9CDB" 
+                  FontAttributes="Bold"/>
+
+                        <Span Text=" and " TextColor="Gray"/>
+
+                        <Span Text="Privacy Policy" 
+                  TextColor="#2D9CDB" 
+                  FontAttributes="Bold"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

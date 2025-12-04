@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SelfShare.Views.ProfilePage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header Section -->
+        <Border Grid.Row="0"
+                BackgroundColor="#2D9CDB"
+                Padding="20,60,20,30">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Top Bar -->
+                <Button Grid.Row="0" Grid.Column="0"
+                        Text="Logout"
+                        BackgroundColor="White"
+                        TextColor="#FF6B6B"
+                        FontSize="14"
+                        FontAttributes="Bold"
+                        CornerRadius="15"
+                        HeightRequest="35"
+                        WidthRequest="80"
+                        HorizontalOptions="Start"
+                        Clicked="OnLogoutClicked"/>
+
+                <Label Grid.Row="0" Grid.Column="1"
+                       Text="Profile"
+                       TextColor="White"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"/>
+
+                <ImageButton Grid.Row="0" Grid.Column="1"
+                            Source="settings_icon.png"
+                            BackgroundColor="Transparent"
+                            HeightRequest="25"
+                            WidthRequest="25"
+                            HorizontalOptions="End"
+                            Clicked="OnSettingsClicked"/>
+
+                <!-- Profile Avatar -->
+                <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                        StrokeThickness="3"
+                        Stroke="White"
+                        StrokeShape="Ellipse"
+                        HeightRequest="80"
+                        WidthRequest="80"
+                        HorizontalOptions="Center"
+                        Margin="0,20,0,0">
+                    <Image Source="user_avatar.png"
+                           Aspect="AspectFill"/>
+                </Border>
+
+                <!-- Profile Info -->
+                <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                       Text="Your Profile"
+                       TextColor="White"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       Margin="0,15,0,0"/>
+
+                <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+                       Text="University"
+                       TextColor="White"
+                       FontSize="16"
+                       HorizontalOptions="Center"
+                       Margin="0,0,0,20"/>
+
+                <!-- Stats -->
+                <HorizontalStackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+                                      HorizontalOptions="Center"
+                                      Spacing="20">
+                    <Border BackgroundColor="White"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 10"
+                            Padding="20,15"
+                            WidthRequest="120">
+                        <StackLayout HorizontalOptions="Center">
+                            <Label Text="15"
+                                   TextColor="#2D9CDB"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="Center"/>
+                            <Label Text="Books Exchanged"
+                                   TextColor="Gray"
+                                   FontSize="12"
+                                   HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </Border>
+
+                    <Border BackgroundColor="White"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 10"
+                            Padding="20,15"
+                            WidthRequest="120">
+                        <StackLayout HorizontalOptions="Center">
+                            <Label Text="8"
+                                   TextColor="#2D9CDB"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="Center"/>
+                            <Label Text="Books Listed"
+                                   TextColor="Gray"
+                                   FontSize="12"
+                                   HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </Border>
+                </HorizontalStackLayout>
+            </Grid>
+        </Border>
+
+        <!-- Books List Section -->
+        <ScrollView Grid.Row="1" Padding="20,20,20,0">
+            <StackLayout Spacing="0">
+                <Label Text="My Books"
+                       FontSize="22"
+                       FontAttributes="Bold"
+                       TextColor="#0A1931"
+                       Margin="0,0,0,15"/>
+
+                <!-- Book Items -->
+                <Border StrokeThickness="0"
+                        BackgroundColor="#F8F9FA"
+                        StrokeShape="RoundRectangle 10"
+                        Padding="15"
+                        Margin="0,5">
+                    <Grid ColumnDefinitions="60, *, Auto">
+                        <Border Grid.Column="0"
+                                StrokeThickness="1"
+                                Stroke="#E0E0E0"
+                                StrokeShape="RoundRectangle 5"
+                                HeightRequest="60"
+                                WidthRequest="45">
+                            <Image Source="book_calculus.png" Aspect="AspectFill"/>
+                        </Border>
+
+                        <StackLayout Grid.Column="1" VerticalOptions="Center" Margin="15,0,0,0">
+                            <Label Text="Calculus 101"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="#0A1931"/>
+                            <Label Text="from Liam Harper"
+                                   FontSize="13"
+                                   TextColor="Gray"/>
+                        </StackLayout>
+
+                        <Label Grid.Column="2"
+                               Text="Listed"
+                               FontSize="12"
+                               TextColor="Gray"
+                               VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+                <Border StrokeThickness="0"
+                        BackgroundColor="#F8F9FA"
+                        StrokeShape="RoundRectangle 10"
+                        Padding="15"
+                        Margin="0,5">
+                    <Grid ColumnDefinitions="60, *, Auto">
+                        <Border Grid.Column="0"
+                                StrokeThickness="1"
+                                Stroke="#E0E0E0"
+                                StrokeShape="RoundRectangle 5"
+                                HeightRequest="60"
+                                WidthRequest="45">
+                            <Image Source="book_chemistry.png" Aspect="AspectFill"/>
+                        </Border>
+
+                        <StackLayout Grid.Column="1" VerticalOptions="Center" Margin="15,0,0,0">
+                            <Label Text="Organic Chemistry"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="#0A1931"/>
+                            <Label Text="from Olivia Bennett"
+                                   FontSize="13"
+                                   TextColor="Gray"/>
+                        </StackLayout>
+
+                        <Label Grid.Column="2"
+                               Text="Listed"
+                               FontSize="12"
+                               TextColor="Gray"
+                               VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+                <Border StrokeThickness="0"
+                        BackgroundColor="#F8F9FA"
+                        StrokeShape="RoundRectangle 10"
+                        Padding="15"
+                        Margin="0,5">
+                    <Grid ColumnDefinitions="60, *, Auto">
+                        <Border Grid.Column="0"
+                                StrokeThickness="1"
+                                Stroke="#E0E0E0"
+                                StrokeShape="RoundRectangle 5"
+                                HeightRequest="60"
+                                WidthRequest="45">
+                            <Image Source="book_algebra.png" Aspect="AspectFill"/>
+                        </Border>
+
+                        <StackLayout Grid.Column="1" VerticalOptions="Center" Margin="15,0,0,0">
+                            <Label Text="Linear Algebra"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="#0A1931"/>
+                            <Label Text="from Ethan Carter"
+                                   FontSize="13"
+                                   TextColor="Gray"/>
+                        </StackLayout>
+
+                        <Label Grid.Column="2"
+                               Text="Listed"
+                               FontSize="12"
+                               TextColor="#4CAF50"
+                               FontAttributes="Bold"
+                               VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

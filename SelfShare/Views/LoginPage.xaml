@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SelfShare.Views.LoginPage"
+             Shell.NavBarIsVisible="True"
+             BackgroundColor="White">
+
+    <ScrollView MaximumWidthRequest="450" HorizontalOptions="Center">
+        <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+
+            <Label Text="Shelf Share" 
+                   TextColor="#0A1931" 
+                   FontSize="28" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center"/>
+
+            <Image Source="books_logo.png" 
+                   HeightRequest="130" 
+                   WidthRequest="130"
+                   HorizontalOptions="Center"/>
+
+            <Label Text="Login" 
+                   TextColor="#0A1931" 
+                   FontSize="26" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,10"/>
+
+            <Border Stroke="#E0E0E0" 
+                    StrokeThickness="1" 
+                    StrokeShape="RoundRectangle 10" 
+                    Padding="15,0"
+                    HeightRequest="50">
+                <Entry x:Name="EmailEntry"
+                       Placeholder="Email" 
+                       TextColor="#0A1931" 
+                       PlaceholderColor="Gray"
+                       Keyboard="Email"
+                       VerticalOptions="Center"/>
+            </Border>
+
+            <Border Stroke="#E0E0E0" 
+                    StrokeThickness="1" 
+                    StrokeShape="RoundRectangle 10" 
+                    Padding="15,0"
+                    HeightRequest="50">
+                <Grid ColumnDefinitions="*, Auto">
+
+                    <Entry x:Name="PasswordEntry"
+                           Grid.Column="0" 
+                           Placeholder="Password" 
+                           IsPassword="True" 
+                           TextColor="#0A1931" 
+                           PlaceholderColor="Gray"
+                           VerticalOptions="Center"/>
+
+                    <ImageButton x:Name="EyeIcon"
+                 Grid.Column="1"
+                 Source="eye_closed.png" 
+                 BackgroundColor="Transparent"
+                 HeightRequest="15"
+                 WidthRequest="15"
+                 Opacity="0.6"
+                 VerticalOptions="Center"
+                 Clicked="OnEyeIconClicked"/>
+                </Grid>
+            </Border>
+
+            <Label Text="Forgot Password ?" 
+                   TextColor="#2D9CDB" 
+                   FontSize="14" 
+                   HorizontalOptions="End"
+                   FontAttributes="Bold">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnForgotPasswordClicked"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Button Text="Log In"
+                    BackgroundColor="#2D9CDB"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Margin="0,20,0,0"
+                    Clicked="OnLoginClicked"/>
+
+            <Label HorizontalOptions="Center" 
+                   HorizontalTextAlignment="Center"
+                   FontSize="11"
+                   Margin="0,30,0,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="By continuing, you agree to our " TextColor="Gray"/>
+                        <Span Text="Terms Of Service" TextColor="#2D9CDB" FontAttributes="Bold"/>
+                        <Span Text=" and " TextColor="Gray"/>
+                        <Span Text="Privacy Policy" TextColor="#2D9CDB" FontAttributes="Bold"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="5" Margin="0,10,0,0">
+                <Label Text="Don't have an account?" TextColor="Gray" FontSize="13"/>
+                <Label Text="Sign Up" 
+                       TextColor="#2D9CDB" 
+                       FontAttributes="Bold" 
+                       FontSize="13"
+                       TextDecorations="Underline">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSignUpRedirectClicked"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

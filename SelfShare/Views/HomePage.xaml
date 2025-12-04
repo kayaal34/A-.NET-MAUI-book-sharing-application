@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SelfShare.Views.HomePage"
+             BackgroundColor="White"
+             Title="Home">
+
+    <Grid RowDefinitions="Auto,Auto,*">
+        <StackLayout BackgroundColor="#2D9CDB" Padding="18" Orientation="Vertical">
+            <Label Text="Home" TextColor="White" FontSize="28" FontAttributes="Bold"/>
+            <Frame BackgroundColor="White" CornerRadius="6" Padding="6" Margin="0,12,0,0">
+                <HorizontalStackLayout Spacing="10">
+                    <Image Source="search_icon.png" HeightRequest="18" WidthRequest="18"/>
+                    <Entry x:Name="SearchEntry" Placeholder="Search book or writer..." HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+                </HorizontalStackLayout>
+            </Frame>
+        </StackLayout>
+
+        <CollectionView Grid.Row="2" x:Name="BooksCollection" Margin="12" ItemsLayout="VerticalList">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame CornerRadius="12" Padding="10" Margin="0,8" HasShadow="False" BackgroundColor="White" BorderColor="#E8E8E8">
+                        <HorizontalStackLayout Spacing="12">
+                            <Image Source="book_placeholder.png" HeightRequest="60" WidthRequest="40" Aspect="AspectFill"/>
+                            <VerticalStackLayout VerticalOptions="CenterAndExpand" Spacing="6">
+                                <Label Text="{Binding Title}" FontAttributes="Bold" FontSize="16"/>
+                                <Label Text="{Binding Author}" FontSize="12" TextColor="#6E6E6E"/>
+                                <HorizontalStackLayout Spacing="8">
+                                    <Frame BackgroundColor="#E0F7FA" Padding="6" CornerRadius="6" HasShadow="False" VerticalOptions="Center">
+                                        <Label Text="{Binding Condition}" FontSize="12" TextColor="#00796B"/>
+                                    </Frame>
+                                    <Button Text="Send to request" BackgroundColor="#18A085" TextColor="White" CornerRadius="8" HeightRequest="28"/>
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

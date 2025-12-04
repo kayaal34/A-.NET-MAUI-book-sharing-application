@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="SelfShare.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:SelfShare.Views">
+
+    <!-- Welcome Page as Initial Page -->
+    <ShellContent Title="Welcome" 
+                  ContentTemplate="{DataTemplate views:WelcomePage}" 
+                  Route="Welcome" />
+
+    <!-- Main TabBar (will be navigated to after login) -->
+    <TabBar Route="MainTabs">
+        <ShellContent Title="Home" Icon="home_icon.png" ContentTemplate="{DataTemplate views:HomePage}" />
+        <ShellContent Title="Add Book" Icon="add_icon.png" ContentTemplate="{DataTemplate views:AddBookPage}" />
+        <ShellContent Title="Requests" Icon="requests_icon.png" ContentTemplate="{DataTemplate views:HomePage}" />
+        <ShellContent Title="Profile" Icon="profile_icon.png" ContentTemplate="{DataTemplate views:ProfilePage}" />
+    </TabBar>
+</Shell>

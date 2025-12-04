@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SelfShare.Views.AddBookPage"
+             BackgroundColor="White"
+             Title="Add New Book">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="18">
+
+            <!-- Header -->
+            <Frame BackgroundColor="#2D9CDB" CornerRadius="18" Padding="12" HasShadow="False">
+                <Label Text="Add New Book" HorizontalOptions="Center" TextColor="White" FontAttributes="Bold" FontSize="18"/>
+            </Frame>
+
+            <!-- Form -->
+            <Border Stroke="#E0E0E0" StrokeThickness="1" StrokeShape="RoundRectangle 10" Padding="12">
+                <Entry x:Name="TitleEntry" Placeholder="Book Title" PlaceholderColor="#9E9E9E" />
+            </Border>
+
+            <Border Stroke="#E0E0E0" StrokeThickness="1" StrokeShape="RoundRectangle 10" Padding="12">
+                <Entry x:Name="AuthorEntry" Placeholder="Author" PlaceholderColor="#9E9E9E" />
+            </Border>
+
+            <Border Stroke="#E0E0E0" StrokeThickness="1" StrokeShape="RoundRectangle 12" Padding="12" HeightRequest="140">
+                <Editor x:Name="DescriptionEditor" Placeholder="Description" BackgroundColor="Transparent" />
+            </Border>
+
+            <Border Stroke="#E0E0E0" StrokeThickness="1" StrokeShape="RoundRectangle 10" Padding="12">
+                <Entry x:Name="ConditionEntry" Placeholder="Condition" PlaceholderColor="#9E9E9E" />
+            </Border>
+
+            <!-- Upload photo -->
+            <Frame BorderColor="#DADADA" CornerRadius="12" Padding="18" HeightRequest="140" HasShadow="False">
+                <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image Source="upload_icon.svg" HeightRequest="44" WidthRequest="44" Opacity="0.7"/>
+                    <Label Text="Upload Photo" FontAttributes="Bold" TextColor="#2D9CDB" HorizontalOptions="Center"/>
+                    <Label Text="Tap to add photo of your book" FontSize="12" TextColor="#9E9E9E" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnUploadPhotoTapped" NumberOfTapsRequired="1"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <Button Text="Add Book" BackgroundColor="#2D9CDB" TextColor="White" CornerRadius="10" HeightRequest="50" Clicked="OnAddBookClicked"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
