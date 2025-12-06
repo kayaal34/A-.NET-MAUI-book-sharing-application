@@ -1,45 +1,88 @@
-using System;
-using Microsoft.Maui.Controls;
+using SelfShare.Models;   // Kitap kalıbını kullanacağız
+using SelfShare.Services; // Depoya erişeceğiz
 
 namespace SelfShare.Views;
 
 public partial class AddBookPage : ContentPage
+
+
 {
+    string? selectedImageFilePath;
+
     public AddBookPage()
     {
         InitializeComponent();
     }
 
-    private async void OnUploadPhotoTapped(object sender, EventArgs e)
+
+    // 2. PARÇA: Fotoğraf kodunu buraya, diğer metodların altına yapıştır
+    private async void OnUploadPhotoTapped(object sender, TappedEventArgs e)
     {
-        // Placeholder: integrate file picker or media plugin
-        await DisplayAlert("Upload", "Upload photo tapped (implement file picker).", "OK");
+        try
+        {
+            var result = await MediaPicker.Default.PickPhotoAsync();
+
+            if (result != null)
+            {
+                var newFile = Path.Combine(FileSystem.CacheDirectory, result.FileName);
+                using (var stream = await result.OpenReadAsync())
+                using (var newStream = File.OpenWrite(newFile))
+                {
+                    await stream.CopyToAsync(newStream);
+                }
+
+                selectedImageFilePath = newFile;
+                BookImage.Source = ImageSource.FromFile(selectedImageFilePath);
+            }
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Hata", $"Fotoğraf seçilemedi: {ex.Message}", "Tamam");
+        }
     }
 
     private async void OnAddBookClicked(object sender, EventArgs e)
     {
-        var title = TitleEntry.Text?.Trim();
-        var author = AuthorEntry.Text?.Trim();
-        var description = DescriptionEditor.Text?.Trim();
-        var condition = ConditionEntry.Text?.Trim();
-
-        if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(author))
+        // 1. Kontrol: Kitap adı veya yazar girilmemişse uyarı ver
+        if (string.IsNullOrWhiteSpace(TitleEntry.Text) || string.IsNullOrWhiteSpace(AuthorEntry.Text))
         {
-            await DisplayAlert("Validation", "Please enter title and author.", "OK");
-            return;
+            await DisplayAlert("Uyarı", "Lütfen en azından Kitap Adı ve Yazar bilgilerini girin.", "Tamam");
+            return; // İşlemi durdur
         }
 
-        // TODO: Save book to local list or call API
-        await DisplayAlert("Success", "Book added.", "OK");
+        // 2. Yeni bir Kitap nesnesi oluştur ve verileri içine doldur
+        var newBook = new Models.Book
+        {
+            Title = TitleEntry.Text,
+            Author = AuthorEntry.Text,
+            Description = DescriptionEditor.Text,
+            Condition = ConditionEntry.Text,
+            ImageUrl = selectedImageFilePath, // Az önce seçtiğimiz resmin yolu
+            OwnerName = "Ben" // Şimdilik sabit yazalım, sonra giriş yapan kullanıcı olacak
+        };
 
-        // Navigate back to home
-        try
-        {
-            await Shell.Current.GoToAsync("..");
-        }
-        catch
-        {
-            await Navigation.PopAsync();
-        }
+        // --- BURASI ÇOK ÖNEMLİ ---
+        // Şu an veritabanımız (SQLite) aktif olmadığı için sadece ekranda mesaj göstereceğiz.
+        // Bir sonraki adımda buraya "Veritabanına Kaydet" kodunu yazacağız.
+
+        var repo = new BookRepository();
+
+        // 2. Kitabı veritabanına ekle
+        await repo.AddBookAsync(newBook);
+
+        // 3. Kullanıcıya bilgi ver
+        await DisplayAlert("Başarılı", "Kitabınız rafa eklendi!", "Tamam");
+
+        // 3. Giriş kutularını temizle (İsteğe bağlı)
+        TitleEntry.Text = string.Empty;
+        AuthorEntry.Text = string.Empty;
+        DescriptionEditor.Text = string.Empty;
+        ConditionEntry.Text = string.Empty;
+        BookImage.Source = "upload_cloud.png"; // Resmi sıfırla
+
+        // 4. Ana Sayfaya Geri Dön
+        TitleEntry.Text = string.Empty;
+        // ...
+        await Shell.Current.GoToAsync("//HomePage");
     }
 }
