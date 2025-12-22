@@ -1,80 +1,52 @@
-# SelfShare - Book Exchange App
+# 📚 SelfShare - Student Book Exchange Platform
 
-A .NET MAUI cross-platform mobile application for university students to exchange textbooks with each other.
-
-## About
-
-SelfShare is designed to help students share and exchange textbooks within their university community. Students can list their available books, browse books from other students, and arrange exchanges to save money on expensive textbooks.
-
-**Developed by students from Ural Federal University**
-
-## Technology Stack
-
-- .NET 8
-- .NET MAUI (Multi-platform App UI)
-- C# 12.0
-- XAML
-
-## How to Run
-
-### Prerequisites
-- Visual Studio 2022 (17.8 or later)
-- .NET 8.0 SDK
-- MAUI workloads installed
-
-### Installation & Running
-
-1. Clone the repository:
-```bash
-git clone https://github.com/kayaal34/A-.NET-MAUI-book-sharing-application.git
-cd A-.NET-MAUI-book-sharing-application
-```
-
-2. Navigate to project directory:
-```bash
-cd SelfShare
-```
-
-3. Restore dependencies:
-```bash
-dotnet restore
-```
-
-4. Build and run:
-```bash
-# For Windows (recommended)
-dotnet run --framework net8.0-windows10.0.19041.0
-
-# For Android
-dotnet run --framework net8.0-android
-```
-
-## Current Features
-
-- Welcome screen with app introduction
-- User registration and login interface
-- User profile management
-- Basic book listing structure
-- Cross-platform navigation
-
-## Project Structure
-
-```
-SelfShare/
-??? Views/                    # Application pages
-??? Resources/Images/         # App icons and images
-??? Resources/Styles/         # UI themes
-??? AppShell.xaml            # Navigation structure
-```
-
-## Development Status
-
-This project is currently in active development. Core UI components are implemented, with backend integration planned for future releases.
-
-## Contact
-
-Repository: https://github.com/kayaal34/A-.NET-MAUI-book-sharing-application
+**SelfShare** is a cross-platform mobile application designed to facilitate peer-to-peer book sharing among university students. Built with **.NET MAUI**, it demonstrates a modern, scalable approach to cross-platform mobile development using a single C# codebase for both Android and iOS.
 
 ---
 
-**Made with ?? using .NET MAUI**
+## 📱 App Screenshots
+
+| Login | Home Feed | Request System | Add New Book | User Profile |
+|:---:|:---:|:---:|:---:|:---:|
+| <img src="screenshots/login.png" width="180"> | <img src="screenshots/home.png" width="180"> | <img src="screenshots/requests.png" width="180"> | <img src="screenshots/add_book.png" width="180"> | <img src="screenshots/profile.png" width="180"> |
+| *Secure Login* | *Browse Books* | *Manage Requests* | *List Resources* | *Track Stats* |
+
+---
+
+## 🚀 Tech Stack & Architecture
+
+* **Framework:** .NET MAUI (.NET 8/9)
+* **Language:** C#
+* **Architecture:** MVVM (Model-View-ViewModel) Pattern
+* **Data Persistence:** Entity Framework Core (SQLite)
+* **UI:** XAML with Custom Controls & Material Design principles
+* **Authentication:** Custom Identity Management (Login/Register logic)
+
+## 💡 Key Features
+
+* **User Authentication:** Secure login and registration system.
+* **Book Management (CRUD):** Users can list, edit, and remove books from their profile.
+* **Search & Filtering:** Dynamic search functionality to find specific titles or authors.
+* **Request System:** A complete state-management system for book exchanges (Pending -> Accepted/Declined).
+* **Profile Management:** User-specific dashboard to track exchanges and currently listed books.
+
+## 🔧 Installation & Setup
+
+1.  **Clone the repository**
+    ```bash
+    git clone [https://github.com/KULLANICI_ADIN/SelfShare.git](https://github.com/KULLANICI_ADIN/SelfShare.git)
+    ```
+2.  **Open in Visual Studio**
+    * Ensure the `.NET MAUI` workload is installed.
+3.  **Build & Run**
+    * Select an Android Emulator or connect a physical device.
+    * Press `F5` to build and deploy.
+
+---
+
+## 👨‍💻 Author
+
+**Fırat Karataşoğlu**
+*Software Engineering Student & Google AI Academy Fellow*
+
+* www.linkedin.com/in/firat-karatasoglu
