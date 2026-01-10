@@ -51,11 +51,10 @@
 		<!-- Explicit MAUI package to satisfy .NET 8 implicit package requirement -->
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.100" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Models\" />
-	  <Folder Include="Services\" />
 	  <Folder Include="ViewModels\" />
 	</ItemGroup>
 
@@ -74,6 +73,9 @@
 	  <MauiXaml Update="AppShell.xaml" />
 	  <MauiXaml Update="Views\LoginPage.xaml" />
 	  <MauiXaml Update="Views\ProfilePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\RequestsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\SignUpPage.xaml" />
